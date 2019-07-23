@@ -5,8 +5,13 @@ import App from './App'
 import axios from 'axios'
 import iView from 'iview'
 import router from './router'
+import fastclick from 'fastclick'
+import 'lib-flexible'
+import '../src/assets/css/reset.css'
+
 
 Vue.config.productionTip = false
+fastclick.attach(document.body)
 Vue.use(iView)
 Vue.prototype.axios = axios
 
