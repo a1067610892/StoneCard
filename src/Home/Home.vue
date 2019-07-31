@@ -3,7 +3,7 @@
     <header class="Home-header">炉石传说卡牌</header>
     <Row class="Home-row" type="flex" justify="center">
       <i-col order="1" span="8" v-for="(item, index) in list" :key="index">
-        <img :src="item.img">
+        <img class="item-img" :src="item.img">
         <p>{{item.name}}</p>
       </i-col>
     </Row>
@@ -40,7 +40,6 @@ export default {
             this.list.push(...res.data[i])
           }
         }
-        console.log(this.list)
       })
     }
   }
@@ -66,6 +65,11 @@ export default {
   z-index: 999;
 }
 .Home .Home-row {
+  text-align: center;
   margin-top: 1.066667rem;
+}
+.item-img {
+  width: 3rem;
+  height: 6.2rem;
 }
 </style>
