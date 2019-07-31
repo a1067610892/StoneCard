@@ -1,6 +1,12 @@
 <template>
   <div class="Home">
-    <header></header>
+    <header class="Home-header">炉石传说卡牌</header>
+    <Row class="Home-row" type="flex" justify="center">
+      <i-col order="1" span="8" v-for="(item, index) in list" :key="index">
+        <img :src="item.img">
+        <p>{{item.name}}</p>
+      </i-col>
+    </Row>
   </div>
 </template>
 
@@ -8,7 +14,9 @@
 export default {
   name: 'Home',
   data () {
-    return { }
+    return {
+      list: []
+    }
   },
   mounted () {
     this.getData()
@@ -21,7 +29,18 @@ export default {
           'X-RapidAPI-Key': '0685dd1ce0mshd4f59a680e297f8p17ded4jsn38715681a32f'
         }
       }).then((res) => {
-        console.log(res)
+        for (let i in res.data) {
+          if (res.data[i] === res.data['Basic']) {
+            res.data[i].forEach((item, index) => {
+              if (res.data[i][index].health !== 30) {
+                this.list.push(res.data[i][index])
+              }
+            })
+          } else if (res.data[i].length !== 0) {
+            this.list.push(...res.data[i])
+          }
+        }
+        console.log(this.list)
       })
     }
   }
@@ -29,4 +48,24 @@ export default {
 </script>
 
 <style scoped>
+.Home {
+  width: 10rem;
+  margin: 0 auto;
+}
+.Home .Home-header {
+  width: 100%;
+  height: 1.066667rem;
+  line-height: 1.066667rem;
+  text-align: center;
+  background: #00BCD4;
+  color: #FFF;
+  font-size: .32rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+.Home .Home-row {
+  margin-top: 1.066667rem;
+}
 </style>

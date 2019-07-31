@@ -8,7 +8,8 @@ import router from './router'
 import fastclick from 'fastclick'
 import 'lib-flexible'
 import '../src/assets/css/reset.css'
-
+import '../src/assets/css/border.css'
+import 'iview/dist/styles/iview.css'
 
 Vue.config.productionTip = false
 fastclick.attach(document.body)
