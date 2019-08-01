@@ -2,7 +2,7 @@
   <div class="Home">
     <header class="Home-header">炉石传说卡牌</header>
     <Row class="Home-row" type="flex" justify="center">
-      <i-col order="1" span="8" v-for="(item, index) in list" :key="index">
+      <i-col order="1" span="8" v-for="(item, index) in arrAy" :key="index">
         <img class="item-img" :src="item.img">
         <p>{{item.name}}</p>
       </i-col>
@@ -15,7 +15,8 @@ export default {
   name: 'Home',
   data () {
     return {
-      list: []
+      list: [],
+      arrAy: []
     }
   },
   mounted () {
@@ -40,7 +41,50 @@ export default {
             this.list.push(...res.data[i])
           }
         }
+        this.arrSort(this.list)
       })
+    },
+    arrSort (arr) {
+      let array = []
+      let array1 = []
+      let array2 = []
+      let array3 = []
+      let array4 = []
+      let array5 = []
+      let array6 = []
+      let array7 = []
+      let array8 = []
+      let array9 = []
+      let array10 = []
+      let array11 = []
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i].cost === 0) {
+          array.push(arr[i])
+        } else if (arr[i].cost === 1) {
+          array1.push(arr[i])
+        } else if (arr[i].cost === 2) {
+          array2.push(arr[i])
+        } else if (arr[i].cost === 3) {
+          array3.push(arr[i])
+        } else if (arr[i].cost === 4) {
+          array4.push(arr[i])
+        } else if (arr[i].cost === 5) {
+          array5.push(arr[i])
+        } else if (arr[i].cost === 6) {
+          array6.push(arr[i])
+        } else if (arr[i].cost === 7) {
+          array7.push(arr[i])
+        } else if (arr[i].cost === 8) {
+          array8.push(arr[i])
+        } else if (arr[i].cost === 9) {
+          array9.push(arr[i])
+        } else if (arr[i].cost === 10) {
+          array10.push(arr[i])
+        } else {
+          array11.push(arr[i])
+        }
+      }
+      this.arrAy.push(...array, ...array1, ...array2, ...array3, ...array4, ...array5, ...array6, ...array7, ...array8, ...array9, ...array10, ...array11)
     }
   }
 }
