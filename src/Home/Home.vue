@@ -1,16 +1,12 @@
 <template>
   <div class="Home">
     <header class="Home-header">炉石传说卡牌</header>
-    <Row class="Home-row" type="flex" justify="center">
-      <i-col order="1" span="8" v-for="(item, index) in arrAy" :key="index">
-        <img class="item-img" :src="item.img">
-        <p>{{item.name}}</p>
-      </i-col>
-    </Row>
+    <home-list :list="arrAy"></home-list>
   </div>
 </template>
 
 <script>
+import HomeList from './components/List'
 export default {
   name: 'Home',
   data () {
@@ -18,6 +14,9 @@ export default {
       list: [],
       arrAy: []
     }
+  },
+  components: {
+    HomeList
   },
   mounted () {
     this.getData()
@@ -45,18 +44,7 @@ export default {
       })
     },
     arrSort (arr) {
-      let array = []
-      let array1 = []
-      let array2 = []
-      let array3 = []
-      let array4 = []
-      let array5 = []
-      let array6 = []
-      let array7 = []
-      let array8 = []
-      let array9 = []
-      let array10 = []
-      let array11 = []
+      let [array, array1, array2, array3, array4, array5, array6, array7, array8, array9, array10, array11] = [[], [], [], [], [], [], [], [], [], [], [], []]
       for (let i = 0; i < arr.length; i++) {
         if (arr[i].cost === 0) {
           array.push(arr[i])
@@ -95,7 +83,7 @@ export default {
   width: 10rem;
   margin: 0 auto;
 }
-.Home .Home-header {
+.Home-header {
   width: 100%;
   height: 1.066667rem;
   line-height: 1.066667rem;
@@ -107,13 +95,5 @@ export default {
   top: 0;
   left: 0;
   z-index: 999;
-}
-.Home .Home-row {
-  text-align: center;
-  margin-top: 1.066667rem;
-}
-.item-img {
-  width: 3rem;
-  height: 6.2rem;
 }
 </style>
