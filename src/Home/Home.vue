@@ -1,27 +1,32 @@
 <template>
   <div class="Home">
     <header class="Home-header">炉石传说卡牌</header>
+    <home-header @switchArr="Arrcost" :numArr='num'></home-header>
     <home-list :list="arrAy"></home-list>
   </div>
 </template>
 
 <script>
 import HomeList from './components/List'
+import HomeHeader from './components/Header'
 export default {
   name: 'Home',
   data () {
     return {
       list: [],
-      arrAy: []
+      arrAy: [],
+      num: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     }
   },
   components: {
-    HomeList
+    HomeList,
+    HomeHeader
   },
   mounted () {
     this.getData()
   },
   methods: {
+    /* 请求数据，把获取到的数据渲染到页面上 */
     getData () {
       this.axios.get('https://omgvamp-hearthstone-v1.p.rapidapi.com/cards?locale=zhCN&collectible=1', {
         headers: {
@@ -43,6 +48,7 @@ export default {
         this.arrSort(this.list)
       })
     },
+    /* 数组排序 */
     arrSort (arr) {
       let [array, array1, array2, array3, array4, array5, array6, array7, array8, array9, array10, array11] = [[], [], [], [], [], [], [], [], [], [], [], []]
       for (let i = 0; i < arr.length; i++) {
@@ -73,6 +79,16 @@ export default {
         }
       }
       this.arrAy.push(...array, ...array1, ...array2, ...array3, ...array4, ...array5, ...array6, ...array7, ...array8, ...array9, ...array10, ...array11)
+    },
+    Arrcost (number) {
+      this.arrAy = []
+      for (let i = 0; i < this.list.length; i++) {
+        if (this.list[i].cost === number) {
+          this.arrAy.push(this.list[i])
+        }
+      }
+      console.log(this.arrAy)
+      console.log(number)
     }
   }
 }

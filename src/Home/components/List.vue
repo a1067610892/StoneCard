@@ -15,7 +15,8 @@ export default {
   name: 'Home',
   data () {
     return {
-      Solve404: 'this.src="' + require('../../assets/img/404.jpg') + '"'
+      /* 图片加载404，使用默认图片 */
+      Solve404: 'this.src="' + require('../../assets/img/404.png') + '"'
     }
   },
   methods: {
@@ -36,10 +37,11 @@ export default {
 .Home-list {
   width: 10rem;
   display: flex;
-  margin-top: 1.066667rem;
   text-align: center;
   justify-content: center;
   flex-wrap: wrap;
+  margin: 2.4rem auto 0 auto;
+  background: #f5f5f5;;
 }
 .Home-item {
   flex: 1;
