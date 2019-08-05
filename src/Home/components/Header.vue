@@ -21,7 +21,7 @@ export default {
     /* 点击选择费用，然后传值 */
     cost (number) {
       this.activeIndex = number
-      this.$emit('switchArr', this.activeIndex)
+      this.$emit('switchArr', this.activeIndex, true)
     }
   }
 }

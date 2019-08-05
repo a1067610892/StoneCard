@@ -84,7 +84,8 @@ export default {
       }
       this.arrAy.push(...array, ...array1, ...array2, ...array3, ...array4, ...array5, ...array6, ...array7, ...array8, ...array9, ...array10, ...array11)
     },
-    Arrcost (number) {
+    Arrcost (number, show) {
+      this.Loding = true
       this.arrAy = []
       for (let i = 0; i < this.list.length; i++) {
         if (this.list[i].cost === number) {
@@ -98,8 +99,6 @@ export default {
       handler (newVal, oldVal) {
         if (newVal.length !== 0) {
           this.Loding = false
-        } else {
-          this.Loding = true
         }
       }
     }

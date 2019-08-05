@@ -26,6 +26,9 @@ export default {
   height: 6.666667rem;
   margin: 0 auto;
 }
+.ivu-col-span-8 {
+  width: 100%;
+}
 .demo-spin-icon-load{
     animation: ani-demo-spin 1s linear infinite;
 }
