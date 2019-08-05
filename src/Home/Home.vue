@@ -3,24 +3,28 @@
     <header class="Home-header">炉石传说卡牌</header>
     <home-header @switchArr="Arrcost" :numArr='num'></home-header>
     <home-list :list="arrAy"></home-list>
+    <home-loding :LodingShow="Loding"></home-loding>
   </div>
 </template>
 
 <script>
 import HomeList from './components/List'
 import HomeHeader from './components/Header'
+import HomeLoding from '../common/components/Loding'
 export default {
   name: 'Home',
   data () {
     return {
       list: [],
       arrAy: [],
-      num: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+      num: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+      Loding: true
     }
   },
   components: {
     HomeList,
-    HomeHeader
+    HomeHeader,
+    HomeLoding
   },
   mounted () {
     this.getData()
@@ -87,8 +91,17 @@ export default {
           this.arrAy.push(this.list[i])
         }
       }
-      console.log(this.arrAy)
-      console.log(number)
+    }
+  },
+  watch: {
+    arrAy: {
+      handler (newVal, oldVal) {
+        if (newVal.length !== 0) {
+          this.Loding = false
+        } else {
+          this.Loding = true
+        }
+      }
     }
   }
 }
