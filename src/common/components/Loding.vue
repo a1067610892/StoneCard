@@ -27,7 +27,7 @@ export default {
   margin: 0 auto;
 }
 .ivu-col-span-8 {
-  width: 100%;
+  width: 100% !important;
 }
 .demo-spin-icon-load{
     animation: ani-demo-spin 1s linear infinite;
