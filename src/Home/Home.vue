@@ -2,7 +2,7 @@
   <div class="Home">
     <header class="Home-header">炉石传说卡牌</header>
     <home-header @switchArr="Arrcost" :numArr='num'></home-header>
-    <home-list :list="arrAy"></home-list>
+    <home-list :list="arrAy" :mun="arrNum"></home-list>
     <home-loding :LodingShow="Loding"></home-loding>
   </div>
 </template>
@@ -18,7 +18,8 @@ export default {
       list: [],
       arrAy: [],
       num: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-      Loding: true
+      Loding: true,
+      arrNum: -1
     }
   },
   components: {
@@ -38,17 +39,19 @@ export default {
           'X-RapidAPI-Key': '0685dd1ce0mshd4f59a680e297f8p17ded4jsn38715681a32f'
         }
       }).then((res) => {
+        /* 防止数组二次遍历添加 */
+        this.list = []
+        let arr = []
         for (let i in res.data) {
-          if (res.data[i] === res.data['Basic']) {
-            res.data[i].forEach((item, index) => {
-              if (res.data[i][index].health !== 30) {
-                this.list.push(res.data[i][index])
-              }
-            })
-          } else if (res.data[i].length !== 0) {
-            this.list.push(...res.data[i])
+          if (res.data[i].length !== 0) {
+            arr.push(...res.data[i])
           }
         }
+        arr.forEach((item, index) => {
+          if (item.health !== 30) {
+            this.list.push(item)
+          }
+        })
         this.arrSort(this.list)
       })
     },
@@ -84,9 +87,11 @@ export default {
       }
       this.arrAy.push(...array, ...array1, ...array2, ...array3, ...array4, ...array5, ...array6, ...array7, ...array8, ...array9, ...array10, ...array11)
     },
+    /* 点击筛选出相对应费用的卡 */
     Arrcost (number, show) {
       this.Loding = true
       this.arrAy = []
+      this.arrNum = Number(number)
       for (let i = 0; i < this.list.length; i++) {
         if (this.list[i].cost === number) {
           this.arrAy.push(this.list[i])

@@ -1,6 +1,6 @@
 <template>
   <div class="Home-Header">
-    <span :class="{'active': activeIndex === index}" @click="cost(index)" v-for="(item, index) in numArr" :key="index">{{item}}</span>
+    <span class="border" :class="{'active': activeIndex === index}" @click="cost(index)" v-for="(item, index) in numArr" :key="index">{{item}}</span>
     <div class="clear"></div>
   </div>
 </template>
@@ -44,9 +44,11 @@ export default {
   height: .666667rem;
   line-height: .666667rem;
   font-size: .35rem;
-  border: .013333rem solid black;
-  border-radius: .533333rem;
   margin: .333333rem .16rem 0 .16rem;
+}
+.border::before {
+  border-radius: 50%;
+  border-color: black;
 }
 .active {
   background: black;

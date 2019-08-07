@@ -1,6 +1,6 @@
 <template>
   <div class="Home-list">
-    <div class="Home-item" v-for="(item, index) in list" :key="index" @click="Jump(item)">
+    <div class="Home-item" v-for="(item) in list" :key="item.cardId" @click="Jump(item)">
       <img :onerror="Solve404" class="item-img" :src="item.img">
       <p>{{item.name}}</p>
     </div>
@@ -10,7 +10,8 @@
 <script>
 export default {
   props: {
-    list: Array
+    list: Array,
+    mun: Number
   },
   name: 'Home',
   data () {

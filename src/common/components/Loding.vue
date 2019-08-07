@@ -26,6 +26,9 @@ export default {
   height: 6.666667rem;
   margin: 0 auto;
 }
+.demo-spin-col {
+  border: none !important;
+}
 .ivu-col-span-8 {
   width: 100% !important;
 }
