@@ -64,8 +64,29 @@ export default {
         case 'Legendary':
           this.item.rarity = '传说'
           break
+        case 'Basic':
+          this.item.cardSet = '基础'
+          break
+        case 'Classic':
+          this.item.cardSet = '经典'
+          break
+        case 'Naxxramas':
+          this.item.cardSet = '纳克萨玛斯'
+          break
+        case 'Blackrock Mountain':
+          this.item.cardSet = '黑石山的火焰'
+          break
+        case 'Goblins vs Gnomes':
+          this.item.cardSet = '地精大战侏儒'
+          break
         case 'The League of Explorers':
           this.item.cardSet = '探险者协会'
+          break
+        case 'One Night in Karazhan':
+          this.item.cardSet = '卡拉赞'
+          break
+        case 'Whispers of the Old Gods':
+          this.item.cardSet = '上古之神的低语'
           break
       }
     }
