@@ -1,6 +1,6 @@
 <template>
   <div class="Home-list">
-    <div class="Home-item" v-for="(item) in list" :key="item.cardId" @click="Jump(item)">
+    <div class="Home-item" v-for="(item, index) in list" :key="item.cardId" @click="Jump(item, index)">
       <img :onerror="Solve404" class="item-img" :src="item.img">
       <p>{{item.name}}</p>
     </div>
@@ -21,12 +21,13 @@ export default {
     }
   },
   methods: {
-    Jump (item) {
+    Jump (item, index) {
       this.$router.push({
         name: 'Details',
         path: '/Details',
         query: {
-          itemList: JSON.stringify(item)
+          itemList: JSON.stringify(item),
+          itemIndex: index
         }
       })
     }

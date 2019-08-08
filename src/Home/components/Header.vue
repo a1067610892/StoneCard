@@ -53,6 +53,7 @@ export default {
 .active {
   background: black;
   color: #FFF;
+  border-radius: 50%;
 }
 .clear {
   clear: both;
